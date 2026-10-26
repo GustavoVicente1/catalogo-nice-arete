@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Catálogo digital cultural sobre Nice Aretê (Leonice da Silva), ceramista de Cuiabá, Mato Grosso. Projeto de Extensão II — ADS/UNIC.">
+<title>Nice Aretê | Catálogo Cultural</title>
+<style>
+:root{--bg:#f8f3ed;--ink:#30251e;--clay:#a45339;--clay-dark:#7e422f;--sand:#e9d6c5;--earth:#35261f;--line:#d9c9bc;--card:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+a{color:#8b412c}
+a:focus-visible,button:focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:10px 14px;z-index:10}
+.skip:focus{left:10px;top:10px}
+
+header{position:sticky;top:0;z-index:5;background:var(--earth);color:#fff;padding:14px 7%;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+header strong{letter-spacing:.06em;font-size:15px}
+header nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:15px;opacity:.9}
+header nav a:hover{opacity:1;text-decoration:underline}
+
+main{max-width:1080px;margin:auto;padding:0 24px}
+section{padding:60px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.hero{padding:80px 0 70px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.hero-art svg{width:100%;height:auto;display:block}
+.band{height:34px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='34'%3E%3Cpath d='M0 17 Q15 2 30 17 T60 17' fill='none' stroke='%23a45339' stroke-width='2' opacity='.45'/%3E%3Ccircle cx='30' cy='26' r='2.2' fill='%23a45339' opacity='.4'/%3E%3C/svg%3E") repeat-x center}
+.tile .icon svg{width:44px;height:44px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px}
+.gallery figure{margin:0;background:#fbf7f3;border:1px solid #e5d7cb;border-radius:15px;padding:16px;text-align:center}
+.gallery svg{width:100%;max-width:150px;height:auto}
+.gallery figcaption{font-size:14px;color:#725e50}
+.eyebrow{color:var(--clay);font-weight:800;letter-spacing:.13em;text-transform:uppercase;font-size:13px}
+h1{font:clamp(48px,8vw,92px)/1.06 Georgia,serif;margin:12px 0}
+h2{font:clamp(30px,4vw,38px)/1.2 Georgia,serif;margin:10px 0 18px}
+h3{font-family:Georgia,serif}
+p{max-width:780px}
+.lead{font-size:22px}
+.pill{display:inline-block;background:var(--sand);padding:8px 14px;border-radius:99px;margin:4px 6px 4px 0;font-size:15px}
+.btn{display:inline-block;margin-top:24px;background:var(--clay);color:#fff;text-decoration:none;padding:12px 22px;border-radius:99px;font-weight:600}
+.btn:hover{background:var(--clay-dark)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:24px}
+.tile{background:var(--card);border:1px solid #e5d7cb;border-radius:15px;padding:25px;min-height:185px}
+.tile h3{margin-top:0;color:var(--clay-dark)}
+.tile .icon{font-size:28px;line-height:1;margin-bottom:10px;display:block}
+
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start}
+.facts{background:var(--card);border:1px solid #e5d7cb;border-radius:15px;padding:22px 26px}
+.facts dl{margin:0}
+.facts dt{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--clay);font-weight:700;margin-top:14px}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:2px 0 0}
+
+.timeline{list-style:none;padding:0;margin:26px 0 0;border-left:3px solid var(--sand)}
+.timeline li{position:relative;padding:0 0 26px 26px}
+.timeline li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--clay)}
+.timeline .when{font-weight:700;color:var(--clay-dark)}
+
+.visit{background:var(--card);border:1px solid #e5d7cb;border-radius:15px;padding:28px 30px}
+.visit .date{display:inline-block;background:var(--earth);color:#fff;border-radius:8px;padding:4px 12px;font-size:14px;font-weight:600}
+.visit blockquote{margin:20px 0 0;padding:14px 20px;border-left:4px solid var(--clay);background:var(--bg);font-family:Georgia,serif;font-size:19px}
+
+.photo-slot{border:2px dashed #cdb8a7;border-radius:15px;padding:30px;text-align:center;color:#725e50;background:#fbf7f3;margin-top:24px}
+
+.notice{background:#f0e1d1;padding:18px 22px;border-left:4px solid var(--clay);border-radius:4px}
+.sources li{margin-bottom:8px}
+small{color:#725e50}
+
+footer{background:var(--earth);color:#fff;padding:34px 7%}
+footer a{color:#f7cfb5}
+footer .cols{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+.top{position:fixed;right:18px;bottom:18px;background:var(--clay);color:#fff;border:0;border-radius:50%;width:46px;height:46px;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .2s}
+.top.show{opacity:1;pointer-events:auto}
+
+@media(max-width:760px){
+  .two{grid-template-columns:1fr}
+  header{position:static}
+  header nav a{display:inline-block;margin:4px 14px 4px 0}
+  .hero{padding:45px 0;grid-template-columns:1fr}
+  .hero-art{max-width:320px;margin:auto}
+}
+@media print{
+  header,.top,.btn{display:none}
+  body{background:#fff}
+  section{padding:24px 0;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header>
+  <strong>NICE ARETÊ · CULTURA MATO-GROSSENSE</strong>
+  <nav aria-label="Seções">
+    <a href="#artista">Artista</a>
+    <a href="#obras">Produção</a>
+    <a href="#trajetoria">Trajetória</a>
+    <a href="#visita">Visita</a>
+    <a href="#projeto">Projeto</a>
+    <a href="#fontes">Fontes</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Catálogo digital cultural · Projeto de Extensão</div>
+      <h1>Nice Aretê</h1>
+      <p class="lead">A expressividade da cerâmica artística de Mato Grosso, em formas, rostos e narrativas moldadas na argila.</p>
+      <span class="pill">Leonice da Silva</span><span class="pill">Cerâmica artística</span><span class="pill">Cuiabá, MT</span>
+      <br><a class="btn" href="#artista">Conhecer a artista</a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="185" fill="#e9d6c5"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#a45339" stroke-width="1.5" stroke-dasharray="4 8" opacity=".5"/>
+        <!-- vaso alto -->
+        <path d="M165 95 h50 v14 q-8 6 -8 18 q40 30 40 95 q0 70 -50 88 h-14 q-50 -18 -50 -88 q0 -65 40 -95 q0 -12 -8 -18z" fill="#a45339"/>
+        <path d="M150 210 q40 14 80 0" stroke="#f8f3ed" stroke-width="3" fill="none" opacity=".7"/>
+        <path d="M146 240 q44 16 88 0" stroke="#f8f3ed" stroke-width="3" fill="none" opacity=".7"/>
+        <g fill="#f8f3ed" opacity=".75"><circle cx="170" cy="270" r="4"/><circle cx="190" cy="275" r="4"/><circle cx="210" cy="275" r="4"/><circle cx="230" cy="270" r="4"/></g>
+        <!-- tigela -->
+        <path d="M245 255 h95 q-4 48 -47 52 q-44 -4 -48 -52z" fill="#7e422f"/>
+        <path d="M252 270 h82" stroke="#e9d6c5" stroke-width="2.5" opacity=".7"/>
+        <!-- moringa pequena -->
+        <path d="M85 230 q0 -10 10 -14 v-12 h20 v12 q10 4 10 14 q16 14 16 38 q0 36 -36 40 q-36 -4 -36 -40 q0 -24 16 -38z" fill="#c7795b"/>
+        <path d="M80 270 q30 10 60 0" stroke="#f8f3ed" stroke-width="2.5" fill="none" opacity=".7"/>
+        <!-- chão -->
+        <path d="M60 320 h280" stroke="#30251e" stroke-width="2" opacity=".35" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+  <div class="band" aria-hidden="true"></div>
+
+  <!-- 01 ARTISTA -->
+  <section id="artista">
+    <div class="eyebrow">01 · Quem é</div>
+    <h2>Sobre a artista</h2>
+    <div class="two">
+      <div>
+        <p>Nice Aretê é o nome artístico de Leonice da Silva, ceramista ligada à produção cultural mato-grossense. Segundo registros públicos, iniciou seu aprendizado de cerâmica na comunidade de São Gonçalo Beira Rio, em Cuiabá — um dos núcleos tradicionais da cerâmica na região.</p>
+        <p>Sua produção abrange máscaras, esculturas, totens e painéis, com referências culturais variadas e destaque para a expressividade dos rostos. O Sesc Mato Grosso apresenta sua produção escultórica em argila e registra sua atuação em oficinas e exposições de artes visuais.</p>
+      </div>
+      <aside class="facts" aria-label="Ficha da artista">
+        <dl>
+          <dt>Nome</dt><dd>Leonice da Silva</dd>
+          <dt>Nome artístico</dt><dd>Nice Aretê</dd>
+          <dt>Linguagem</dt><dd>Cerâmica artística / escultura em argila</dd>
+          <dt>Origem da formação</dt><dd>São Gonçalo Beira Rio, Cuiabá – MT</dd>
+          <dt>Atuação</dt><dd>Criação de peças, exposições e oficinas</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 02 OBRAS -->
+  <section id="obras">
+    <div class="eyebrow">02 · Linguagens</div>
+    <h2>Expressões em argila</h2>
+    <p>As categorias abaixo organizam a produção da artista com base nas descrições publicadas sobre o seu trabalho.</p>
+    <div class="grid">
+      <article class="tile"><span class="icon" aria-hidden="true">🎭</span><h3>Máscaras</h3><p>Expressões faciais e referências culturais trabalhadas por meio da modelagem.</p></article>
+      <article class="tile"><span class="icon" aria-hidden="true">🗿</span><h3>Esculturas</h3><p>Figuras em argila com atenção especial às feições e à comunicação de emoções.</p></article>
+      <article class="tile"><span class="icon" aria-hidden="true">🪵</span><h3>Totens</h3><p>Composições escultóricas verticais que reúnem figuras e símbolos.</p></article>
+      <article class="tile"><span class="icon" aria-hidden="true">🧱</span><h3>Painéis</h3><p>Peças em cerâmica pensadas para parede, com narrativas em relevo.</p></article>
+    </div>
+    <div class="gallery" aria-label="Ilustrações decorativas">
+      <figure><svg viewBox="0 0 150 150" aria-hidden="true"><ellipse cx="75" cy="75" rx="46" ry="58" fill="#a45339"/><ellipse cx="57" cy="66" rx="9" ry="6" fill="#f8f3ed"/><ellipse cx="93" cy="66" rx="9" ry="6" fill="#f8f3ed"/><path d="M75 74 v18" stroke="#f8f3ed" stroke-width="3" stroke-linecap="round"/><path d="M60 106 q15 9 30 0" stroke="#f8f3ed" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M40 45 q35 -22 70 0" stroke="#e9d6c5" stroke-width="3" fill="none"/></svg><figcaption>Máscara</figcaption></figure>
+      <figure><svg viewBox="0 0 150 150" aria-hidden="true"><path d="M60 20 h30 v10 q-4 4 -4 10 q26 20 26 55 q0 38 -32 45 q-32 -7 -32 -45 q0 -35 26 -55 q0 -6 -4 -10z" fill="#7e422f"/><path d="M48 85 h54 M46 100 h58" stroke="#e9d6c5" stroke-width="3"/></svg><figcaption>Vaso</figcaption></figure>
+      <figure><svg viewBox="0 0 150 150" aria-hidden="true"><rect x="55" y="15" width="40" height="122" rx="8" fill="#c7795b"/><circle cx="75" cy="38" r="10" fill="#f8f3ed"/><path d="M62 70 h26 M62 78 h26" stroke="#f8f3ed" stroke-width="3"/><path d="M66 100 l9 12 l9 -12z" fill="#f8f3ed"/><rect x="45" y="134" width="60" height="6" rx="3" fill="#30251e" opacity=".4"/></svg><figcaption>Totem</figcaption></figure>
+      <figure><svg viewBox="0 0 150 150" aria-hidden="true"><rect x="18" y="25" width="114" height="100" rx="10" fill="#a45339"/><circle cx="52" cy="60" r="16" fill="#e9d6c5"/><path d="M30 110 q25 -35 50 -10 q20 -25 42 10z" fill="#7e422f"/><path d="M90 50 h28 M90 60 h20" stroke="#f8f3ed" stroke-width="3"/></svg><figcaption>Painel</figcaption></figure>
+    </div>
+    <p><small>Ilustrações criadas para este catálogo, apenas decorativas — não representam obras da artista. Fotografias das peças poderão ser incluídas futuramente, com autorização dela.</small></p>
+  </section>
+
+  <!-- 03 TRAJETÓRIA -->
+  <section id="trajetoria">
+    <div class="eyebrow">03 · Cultura e formação</div>
+    <h2>Arte que circula</h2>
+    <p>Além da criação das peças, Nice Aretê leva a cerâmica para fora do ateliê, em exposições e atividades de formação.</p>
+    <ul class="timeline">
+      <li><span class="when">Formação</span><br>Aprendizado da cerâmica na comunidade de São Gonçalo Beira Rio, em Cuiabá.</li>
+      <li><span class="when">2022</span><br>Participação na exposição “Anjos de Natal”, no Sesc Arsenal, associada a cursos de modelagem em argila e esmaltação em cerâmica.</li>
+      <li><span class="when">Oficinas</span><br>Listas de credenciamento artístico do Sesc registram propostas de oficinas e atividades de artes visuais ligadas à artista.</li>
+      <li><span class="when">Outubro de 2026</span><br>Visita da equipe do projeto de extensão e apresentação deste catálogo à artista.</li>
+    </ul>
+  </section>
+
+  <!-- 04 VISITA -->
+  <section id="visita">
+    <div class="eyebrow">04 · Encontro com a artista</div>
+    <h2>A visita</h2>
+    <div class="visit">
+      <span class="date">15 de outubro de 2026</span>
+      <p>Como parte do Projeto de Extensão II, o estudante Gustavo Vicente Caetano conversou com Nice Aretê e apresentou a ela o esboço deste catálogo digital.</p>
+      <p>A artista, de jeito simples e de poucas palavras, recebeu bem a proposta: gostou do resultado e aprovou a ideia de um catálogo direto e fácil de navegar. O retorno orientou a versão final, que manteve a linguagem simples e o foco no trabalho dela.</p>
+      <blockquote>“Gostei, achei lindo.”<br><small>— Nice Aretê, ao ver o esboço do catálogo</small></blockquote>
+    </div>
+  </section>
+
+  <!-- 05 PROJETO -->
+  <section id="projeto">
+    <div class="eyebrow">05 · Sobre este catálogo</div>
+    <h2>Por que um catálogo digital?</h2>
+    <div class="grid">
+      <article class="tile"><h3>Valorizar</h3><p>Dar visibilidade à cerâmica artística mato-grossense e a quem a produz.</p></article>
+      <article class="tile"><h3>Registrar</h3><p>Reunir em um só lugar as informações públicas sobre a trajetória da artista.</p></article>
+      <article class="tile"><h3>Aproximar</h3><p>Levar o trabalho da artista para quem acessa pelo celular ou computador, de forma simples.</p></article>
+    </div>
+    <p style="margin-top:26px">Desenvolvido em HTML e CSS puros, sem dependências externas, para carregar rápido, funcionar em qualquer aparelho e poder ser publicado gratuitamente.</p>
+  </section>
+
+  <!-- 06 FONTES -->
+  <section id="fontes">
+    <div class="eyebrow">06 · Transparência</div>
+    <h2>Fontes</h2>
+    <div class="notice"><strong>Projeto acadêmico.</strong> Catálogo elaborado a partir de informações públicas e de conversa com a artista em 15/10/2026, que viu e aprovou o esboço. Não é um site oficial da artista nem de instituições citadas.</div>
+    <ul class="sources">
+      <li><a href="https://www.sescmt.com.br/index.php/escultura/" rel="noopener" target="_blank">Sesc Mato Grosso — Escultura: Leonice da Silva</a></li>
+      <li><a href="https://exposicao.sescmt.com.br/" rel="noopener" target="_blank">Sesc Mato Grosso — Artesanato de Mato Grosso, tour virtual</a></li>
+      <li><a href="https://www.sescmt.com.br/index.php/2022/11/23/sesc-arsenal-recebe-exposicao-anjos-de-natal/" rel="noopener" target="_blank">Sesc Mato Grosso — Anjos de Natal (2022)</a></li>
+      <li><a href="https://www.olhardireto.com.br/conceito/noticias/conheca-23-ceramistas-de-cuiaba-vg-e-outras-tres-cidades-de-mato-grosso" rel="noopener" target="_blank">Olhar Direto — Ceramistas de Mato Grosso</a></li>
+      <li>Conversa com a artista, Cuiabá – MT, 15 de outubro de 2026.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="cols">
+    <div>
+      <strong>Projeto de Extensão II</strong><br>
+      Análise e Desenvolvimento de Sistemas · UNIC<br>
+      Gustavo Vicente Caetano
+    </div>
+    <div>
+      <a href="https://github.com/GustavoVicente1" rel="noopener" target="_blank">github.com/GustavoVicente1</a><br>
+      <small style="color:#e8c9b6">Cuiabá – MT · 2026</small>
+    </div>
+  </div>
+</footer>
+
+<button class="top" id="top" aria-label="Voltar ao topo">↑</button>
+<script>
+  const b=document.getElementById('top');
+  addEventListener('scroll',()=>b.classList.toggle('show',scrollY>500));
+  b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
